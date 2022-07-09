@@ -152,7 +152,7 @@ check_tun(){
     vpsvirt=$(systemd-detect-virt)
     if [[ ! $TUN =~ 'in bad state' ]] && [[ ! $TUN =~ '处于错误状态' ]] && [[ ! $TUN =~ 'Die Dateizugriffsnummer ist in schlechter Verfassung' ]]; then
         if [[ $vpsvirt == "openvz" ]]; then
-            wget -N --no-check-certificate https://raw.githubusercontents.com/Misaka-blog/tun-script/master/tun.sh && bash tun.sh
+            wget -N --no-check-certificate https://raw.githubusercontents.com/tpe28/tun-script/master/tun.sh && bash tun.sh
         else
             red "检测到未开启TUN模块，请到VPS厂商的控制面板处开启" 
             exit 1
@@ -673,15 +673,15 @@ install_wgcf(){
     fi
 
     if [[ $vpsvirt =~ lxc|openvz ]]; then
-        wget -N --no-check-certificate https://cdn.jsdelivr.net/gh/Misaka-blog/Misaka-WARP-Script/files/wireguard-go -O /usr/bin/wireguard-go
+        wget -N --no-check-certificate https://raw.githubusercontents.com/tpe28/Misaka-WARP-Script/master/files/wireguard-go -O /usr/bin/wireguard-go
         chmod +x /usr/bin/wireguard-go
     fi
     if [[ $vpsvirt == zvm ]]; then
-        wget -N --no-check-certificate https://cdn.jsdelivr.net/gh/Misaka-blog/Misaka-WARP-Script/files/wireguard-go-s390x -O /usr/bin/wireguard-go
+        wget -N --no-check-certificate https://raw.githubusercontents.com/tpe28/Misaka-WARP-Script/master/files/wireguard-go-s390x -O /usr/bin/wireguard-go
         chmod +x /usr/bin/wireguard-go
     fi
 
-    wget -N --no-check-certificate https://cdn.jsdelivr.net/gh/Misaka-blog/Misaka-WARP-Script/files/wgcf_latest_linux_$(archAffix) -O /usr/local/bin/wgcf
+    wget -N --no-check-certificate https://raw.githubusercontents.com/tpe28/Misaka-WARP-Script/master/files/wgcf_latest_linux_$(archAffix) -O /usr/local/bin/wgcf
     chmod +x /usr/local/bin/wgcf
 
     if [[ -f /etc/wireguard/wgcf-account.toml ]]; then
@@ -938,10 +938,10 @@ install_wireproxy(){
         fi
     fi
 
-    wget -N https://cdn.jsdelivr.net/gh/Misaka-blog/Misaka-WARP-Script/files/wireproxy-$(archAffix) -O /usr/local/bin/wireproxy
+    wget -N https://raw.githubusercontents.com/tpe28/Misaka-WARP-Script/master/files/wireproxy-$(archAffix) -O /usr/local/bin/wireproxy
     chmod +x /usr/local/bin/wireproxy
 
-    wget -N --no-check-certificate https://cdn.jsdelivr.net/gh/Misaka-blog/Misaka-WARP-Script/files/wgcf_latest_linux_$(archAffix) -O /usr/local/bin/wgcf
+    wget -N --no-check-certificate https://raw.githubusercontents.com/tpe28/Misaka-WARP-Script/master/files/wgcf_latest_linux_$(archAffix) -O /usr/local/bin/wgcf
     chmod +x /usr/local/bin/wgcf
 
     if [[ -f /etc/wireguard/wgcf-account.toml ]]; then
@@ -1111,10 +1111,10 @@ warpnf(){
     green "4. WireProxy-WARP 代理模式"
     read -rp "请选择客户端 [1-4]：" clientInput
     case "$clientInput" in
-        1 ) wget -N --no-check-certificate https://raw.githubusercontents.com/Misaka-blog/Misaka-WARP-Script/master/wgcf-warp/netfilx4.sh && bash netfilx4.sh ;;
-        2 ) wget -N --no-check-certificate https://raw.githubusercontents.com/Misaka-blog/Misaka-WARP-Script/master/wgcf-warp/netfilx6.sh && bash netfilx6.sh ;;
-        3 ) wget -N --no-check-certificate https://raw.githubusercontents.com/Misaka-blog/Misaka-WARP-Script/master/warp-cli/netfilxcli.sh && bash netfilxcli.sh ;;
-        4 ) wget -N --no-check-certificate https://raw.githubusercontents.com/Misaka-blog/Misaka-WARP-Script/master/wireproxy-warp/netfilx-wireproxy.sh && bash netfilx-wireproxy.sh ;;
+        1 ) wget -N --no-check-certificate https://raw.githubusercontents.com/tpe28/Misaka-WARP-Script/master/wgcf-warp/netfilx4.sh && bash netfilx4.sh ;;
+        2 ) wget -N --no-check-certificate https://raw.githubusercontents.com/tpe28/Misaka-WARP-Script/master/wgcf-warp/netfilx6.sh && bash netfilx6.sh ;;
+        3 ) wget -N --no-check-certificate https://raw.githubusercontents.com/tpe28/Misaka-WARP-Script/master/warp-cli/netfilxcli.sh && bash netfilxcli.sh ;;
+        4 ) wget -N --no-check-certificate https://raw.githubusercontents.com/tpe28/Misaka-WARP-Script/master/wireproxy-warp/netfilx-wireproxy.sh && bash netfilx-wireproxy.sh ;;
     esac
 }
 
